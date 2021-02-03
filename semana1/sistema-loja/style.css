@@ -1,11 +1,46 @@
-div{
-  background-color:#EED7C5;
+header{
+  text-align: center;
+  background-color: #EED7C5;
+  margin:0;
+  padding: 2px;
+  border: 0;
 }
+
+a{
+  color:black
+}
+a:active{
+  color:#EED7C5
+}
+
+a:hover{
+  color:#EED7C5
+}
+
+.logo{
+  position:block;
+  margin-left: 400px;
+}
+
 .Custom{
-  background-color: white;
-  font-size: 16px;
+  text-align: center;
+  font-size: 20px;
 }
-.img{
-  width:20px;
-  height:20px;
+
+
+
+div.img{
+  position:fixed;
+  margin-left:630px;
+  padding:0;
+  bottom:0;
+  border:1px;
+}
+footer >p{
+  text-align: center;
+  position:fixed;
+  margin-left:580px;
+  padding:0;
+  bottom:10px;
+  border:1px;
 }
