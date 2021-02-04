@@ -73,8 +73,13 @@ div img {
 }
 
 #container-de-descricao>ol {
+    margin-top: 100px;
     padding: 15px 0px;
 }
+
+/*#container-de-descricao>p {
+    
+}*/
 
 #container-para-comprar {
     background-color: #e7eb90;
