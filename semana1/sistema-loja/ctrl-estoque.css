@@ -1,15 +1,51 @@
-table{
-    background-color: #EED7C5;
-    display:block
+header {
+  text-align: center;
+  font-size: 25px;
+}
+.logo-header {
+  position: absolute;
+  margin-top: -70px;
+  margin-left: 0px;
 }
 
-a{
-    color:black
-  }
-  a:active{
-    color:#EED7C5
-  }
-  
-  a:hover{
-    color:#EED7C5
-  }
+a {
+  color: black;
+  position: relative;
+  color: black;
+  margin-top: -50px;
+  text-decoration: none;
+}
+
+a:active {
+  color: #eed7c5;
+}
+
+a:hover {
+  color: #eed7c5;
+  text-decoration: underline;
+  font-size: 15px;
+}
+
+table {
+  width: 100%;
+  margin:auto;
+  text-align: center;
+  display: inline-block;
+  font-size: 17px;
+  box-sizing: border-box;
+  border-color:black;
+  border-width: 2px;
+  border-style: solid;
+
+}
+
+th{
+  width: 25%;
+  font-size: large;
+  font-weight: bold;
+}
+
+td{
+  background-color: #eed7c5;
+}
+
