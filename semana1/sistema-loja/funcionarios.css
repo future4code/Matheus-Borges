@@ -1,0 +1,60 @@
+header {
+  text-align: center;
+  font-size: 25px;
+}
+.logo-header {
+  position: absolute;
+  margin-top: -70px;
+  margin-left: 0px;
+}
+
+.logo-header {
+  position: absolute;
+  margin-top: -70px;
+  margin-left: 0px;
+}
+
+a {
+  color: black;
+  position: relative;
+  margin-top: -50px;
+  text-decoration: none;
+}
+
+a:active {
+  color: #eed7c5;
+}
+
+a:hover {
+  color: #eed7c5;
+  text-decoration: underline;
+  font-size: 20px;
+}
+
+h2{
+  text-align: center;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+ul{
+  font-size: large;
+}
+
+.img{
+  background-color: #EED7C5;
+  position:fixed;
+  margin-left:630px;
+  padding:0;
+  bottom:0;
+  border:1px;
+}
+footer >p{
+  background-color: #EED7C5;
+  text-align: center;
+  position:fixed;
+  margin-left:580px;
+  padding:0;
+  bottom:10px;
+  border:1px;
+}
