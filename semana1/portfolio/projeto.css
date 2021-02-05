@@ -1,0 +1,46 @@
+header>h1{
+    text-align: center;
+    font-family: serif;
+    font-style: italic;
+    margin-top: 40px;
+}
+
+.projeto{
+    margin-top: 70px;
+}
+
+#h2_home{
+    font-style: italic;
+    margin-left: 290px;
+    margin-top: 30px;
+}
+
+#descricao_home{
+    position: absolute;
+    top: 225px;
+    right: 350px;
+}
+
+#h2_ctrl_estoque{
+    font-style: italic;
+    margin-left: 221px;
+    margin-top: 30px;
+}
+#descricao_ctrl_estoque{
+    position: absolute;
+    top: 762px;
+    right: 236px;
+}
+
+#h2_add_produto{
+    font-style: italic;
+    margin-left: 210px;
+    margin-top: 30px;
+}
+
+#descricao_add_produtos{
+    position: absolute;
+    top: 1210px;
+    right: 222px;
+}
+
