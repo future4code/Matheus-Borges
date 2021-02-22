@@ -119,20 +119,15 @@ body {
 @media screen and (min-device-width : 320px) and (max-device-width : 420px) {
     #main-container {
         display: grid;
-
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 1fr);
     }
-    div {
-
-    }
-}
 
 @media screen and (min-device-width : 451px) and (max-device-width : 800px){
-    .blocos-brancos{
 }
-
 
 
 
 
 @media screen and (min-device-width : 1200px) {
-    }
+}
