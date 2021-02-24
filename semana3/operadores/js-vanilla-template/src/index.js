@@ -1,3 +1,5 @@
+//                                       OPERADORES
+
 //Exercícios de interpretação de código
 /*  1. a false
     1. b false
@@ -123,3 +125,105 @@ let desconto = 15*100
 let residenciaDesconto = residencia/desconto
 
 console.log(residenciaDesconto)
+*/
+
+//                                              CONDICIONAIS
+
+/*
+exercicio 1
+
+O código pede para o usuario digitar um número e depois converte a String para Number e quem passa no 
+este são números pares e números ímpares são reprovados.
+
+
+exercicio 2
+
+a. Para saber o preço das frutas que o usuario escolher
+
+b. O preço da fruta Maçã é R$ 2.25
+
+c. Mostra o resultado do default de "5" 
+
+
+exercicio 3
+
+a. Essa linha perguntava ao usuario um numero em formato de String e vai converter a resposta em Number
+
+b. Digitando o numero 10 a mensagem seria "Esse número passou no teste" e mostrará que a variavel "mensagem" 
+não está definida por causa que ela está sendo chamada fora do bloco do "if" e se for "-10" o resultado será
+um erro porque a variavel mensagem está sendo chama fora do bloco do "if".
+
+c. O erro "mensagem is not defined" porque ele está sendo chamado fora do bloco do "if"
+
+                                    Exercícios de escrita de código
+exercicio 4
+
+1. 2. 3.
+
+const idade = Number(prompt('Digite a sua idade!'))
+
+if (idade >= 18){
+    console.log('Você pode dirigir.')
+} else {
+    console.log('Você não pode dirigir.')
+}
+
+exercicio 5
+
+
+const turnoUsuario = prompt('Digite o turno que você estuda, sendo que "M" (Matutino), "V" (Vespertino) e "N" (noturno)')
+
+if (turnoUsuario === "M"){
+    console.log('Bom Dia!')
+} else if(turnoUsuario === "V"){
+    console.log('Boa Tarde!')
+} else if(turnoUsuario === "N"){
+    console.log('Boa Noite!')
+} else {
+    console.log('Digite um turno válido')
+}
+
+exercicio 6
+
+const turnoUsuario = prompt('Digite o turno que você estuda, sendo que "M" (Matutino), "V" (Vespertino) e "N" (noturno)')
+
+switch(turnoUsuario){
+    case 'M':
+        console.log('Bom Dia!')
+        break
+    case 'V':
+        console.log('Boa Tarde!')
+        break
+    case 'N':
+        console.log('Boa Noite!')
+        break
+}
+
+exercicio 7
+
+
+const generoFilme = prompt('Digite o gênero do filme')
+const valorIngresso = Number(prompt('Digite o valor do filme'))
+
+if (generoFilme === 'fantasia' && valorIngresso <= 15){
+    console.log('Bom filme!')
+}else {
+    console.log('Escolha outro filme')
+}
+*/
+
+
+//                                            DESAFIO 1
+
+/*
+const generoFilme = prompt('Digite o gênero do filme')
+const valorIngresso = Number(prompt('Digite o valor do filme'))
+const snack = prompt('Qual snack você quer comprar?')
+
+if (generoFilme === 'fantasia' && valorIngresso <= 15){
+    console.log('Bom filme!')
+    console.log('...com ', snack)
+}else {
+    console.log('Escolha outro filme')
+}*/
+
