@@ -225,5 +225,6 @@ if (generoFilme === 'fantasia' && valorIngresso <= 15){
     console.log('...com ', snack)
 }else {
     console.log('Escolha outro filme')
-}*/
+}
+*/
 
