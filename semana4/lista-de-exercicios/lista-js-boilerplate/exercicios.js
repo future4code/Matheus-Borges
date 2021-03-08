@@ -120,7 +120,8 @@ function comparaDoisNumeros(num1, num2) {
    } else{
       console.log('Válores iguas')
    }
-      maiorNumero
+      
+   maiorNumero
 }
 console.log(comparaDoisNumeros(15, 30))
 
