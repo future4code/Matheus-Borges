@@ -1,5 +1,6 @@
-import React from 'react'
-import './IconeComContador.css'
+import React from 'react';
+import './IconeComContador.css';
+import styled from 'styled-components';
 
 export class IconeComContador extends React.Component {
 	render() {

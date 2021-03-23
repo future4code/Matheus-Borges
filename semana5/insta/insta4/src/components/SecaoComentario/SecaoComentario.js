@@ -1,5 +1,6 @@
-import React, {Component} from 'react'
-import './SecaoComentario.css'
+import React, {Component} from 'react';
+import './SecaoComentario.css';
+import styled from 'styled-components';
 
 export class SecaoComentario extends Component {
 	state = {
