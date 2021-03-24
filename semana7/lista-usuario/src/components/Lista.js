@@ -5,14 +5,12 @@ import styled from 'styled-components';
 const DivContainer = styled.div `
 
 `
-
 const DivBotaoEUsuario = styled.div`
     display: flex;
     align-items: center;
     padding: 10px;
     justify-content: space-between;
 `
-
 const UlContainer = styled.p`
     color: #6CBCE1;
     display: flex;
