@@ -1,8 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import Lista from "./components/Lista"
-import Home from "./components/Home"
+import Lista from "./components/Lista";
+import CriarUsuario from "./components/CriarUsuario";
 
+
+const DivContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #6CBCE1;
+  border-radius: 10px;
+  width: 300px;
+`
 const BotaoPagina = styled.button`
   background-color: #6CBCE1;
   border: none;
@@ -12,40 +23,46 @@ const BotaoPagina = styled.button`
   margin: 4px 2px;
   border-radius: 10px;
 `
+const Titulo = styled.h1`
+  color: #6CBCE1;
+`
+
 
 export default class App extends React.Component { 
+
   state = {
-    page: "Home"
-  }
-  changePage = () => {
-    switch(this.state.page) {
-      case "Home":
-        return  <Home /> 
-      case "Lista":
+    pagina: "criarUsuarios",
+  };
+
+  mudarPagina = () => {
+    if(this.state.pagina === "criarUsuarios"){
+      this.setState({pagina: "listaUsuarios"})
+    } else if (this.state.pagina === "listaUsuarios"){
+      this.setState({pagina:"criarUsuarios"})
+    }
+  };
+  
+
+  renderizaPagina = () => {
+    switch(this.state.pagina) {
+      case "criarUsuarios":
+        return  <CriarUsuario /> 
+      case "listaUsuarios":
         return  <Lista /> 
+      default:
+        return  <div></div>
     }
   }
-  changePageState = () => {
-    if(this.state.page === "Home" ) {
-    this.setState({page: "Lista"})
-    } else if (this.state.page === "Lista") {
-    this.setState({page: "Home"})
-    }
-  }
-  changeButton = () => {
-    switch(this.state.page) {
-      case "Home":
-        return <BotaoPagina onClick={this.changePageState}> Lista de Usuários </BotaoPagina>
-      case "Lista":
-        return <BotaoPagina onClick={this.changePageState}> Home </BotaoPagina>
-    }
-  }
+
   render() {
     return (
-      <div>
-        {this.changeButton()}
-        {this.changePage()} 
-      </div>
+      <DivContainer>
+        <Titulo>Labenusers</Titulo>
+
+        <BotaoPagina onClick={this.mudarPagina}>Trocar Página</BotaoPagina>
+          {this.renderizaPagina()}
+
+      </DivContainer>
     );
   }
 }
