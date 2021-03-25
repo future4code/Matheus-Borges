@@ -16,6 +16,7 @@ const InputContainer = styled.input`
     border-bottom: 2px solid #6CBCE1;
     padding: 12px 20px;
     margin: 8px 0;
+    border-radius: 15px;
 `
 const ButtonContainer = styled.button`
     background-color: #6CBCE1;
@@ -69,20 +70,21 @@ createUsuarios = () => {
     render() { 
         return (
             <DivContainer>
-                <TituloLista>Criar Usuário</TituloLista>
+                <TituloLista>Cadastrar Usuário</TituloLista>
+                
                 <InputContainer
                 onChange={this.handleInputName} 
                 value={this.state.inputName}
                 placeholder={'Apelido'}
                 />
 
-                <InputContainer 
+                <InputContainer
                 onChange={this.handleInputEmail} 
                 value={this.state.inputEmail}
                 placeholder={'E-mail'}
                 />
 
-                <ButtonContainer onClick={this.createUsuarios}>Enviar</ButtonContainer>
+                <ButtonContainer onClick={this.createUsuarios}>Cadastrar</ButtonContainer>
             </DivContainer>
         );
     }

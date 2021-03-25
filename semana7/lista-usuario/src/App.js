@@ -59,9 +59,11 @@ export default class App extends React.Component {
       <DivContainer>
         <Titulo>Labenusers</Titulo>
 
-        <BotaoPagina onClick={this.mudarPagina}>Trocar Página</BotaoPagina>
-          {this.renderizaPagina()}
-
+          {this.state.pagina === 'criarUsuarios' ? <BotaoPagina onClick={this.mudarPagina}>Lista de Usuários</BotaoPagina> :
+          <BotaoPagina onClick={this.mudarPagina}>Cadastrar Usuário</BotaoPagina>
+          }
+          
+        {this.renderizaPagina()}
       </DivContainer>
     );
   }

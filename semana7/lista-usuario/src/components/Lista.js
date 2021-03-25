@@ -31,7 +31,9 @@ const ButtonContainer = styled.button`
     border-radius: 10px;
 `
 const TituloLista = styled.h2`
+    display: flex;
     color: #6CBCE1;
+    align-items:center;
 `
 
 
@@ -95,30 +97,26 @@ componentDidMount() {
 
     render() {
         const listaUsuarios = this.state.usuarios.map((usuarios) => {
-            return(
-                <DivBotaoEUsuario onClick={() => this.mudarPaginaId(usuarios.id)} key={usuarios.id}>
-                    <PContainer>{usuarios.name}</PContainer>
+            return(            
+                <DivBotaoEUsuario key={usuarios.id}>
+                    <PContainer onClick={() => this.mudarPaginaId(usuarios.id)}>{usuarios.name}</PContainer>
                     <ButtonContainer onClick={() => this.deleteUsuarios(usuarios.id)}>Deletar</ButtonContainer>
                 </DivBotaoEUsuario>
             );
         });
 
         return (
-            <div>
-
-                <DivContainer>
+            <DivContainer>
                 <TituloLista>Lista de Usuários</TituloLista>
-
+                <DivContainer>
                     {this.state.pagina === 'listaUsuarios' ? listaUsuarios : 
                     <Detalhes
                         id={this.state.id}
                         mudarPaginaId={this.mudarPaginaId}
                     />
                     }
-                   
-
                 </DivContainer>
-            </div>
+            </DivContainer>
         );
     }
 }
