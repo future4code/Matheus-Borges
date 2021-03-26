@@ -3,13 +3,13 @@ import styled from "styled-components";
 import CriarPlaylist from "./components/CriarPlaylist";
 import Lista from "./components/Lista";
 
+
 const DivContainer = styled.div`
   width: 100vw;
   height: 100%;
   background-color: #D643AD;
   background-image: linear-gradient(to right, #D643AD, #07C6FD);
 `;
-
 const TituloLabefy = styled.h1`
   color: white;
   margin-left: 20px;
@@ -64,6 +64,7 @@ const FooterContainer = styled.footer`
   text-align: center;
   text-shadow: 2.5px 2.5px;
 `;
+
 
 export default class App extends React.Component {
   state = {

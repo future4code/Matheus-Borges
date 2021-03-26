@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { baseUrl, axiosConfig } from "../Parametros";
 
+
 const CriarPlaylistContainer = styled.div`
   display: grid;
   margin-top: 60px;
@@ -12,7 +13,6 @@ const DivInputButton = styled.div`
   flex-direction: column;
   margin-top: 90px;
 `;
-
 const TituloCriarPlaylist = styled.h2`
   color: white;
   padding: 5px 70px;
@@ -33,7 +33,6 @@ const DivInput = styled.input`
     border-bottom: 2px solid #D643AD;
     border-top: 2px solid #07C6FD;
 `
-
 const ButtonVerPlaylist = styled.button`
   background-color: #D643AD;
   border: none;

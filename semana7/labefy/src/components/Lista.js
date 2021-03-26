@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { baseUrl, axiosConfig } from "../Parametros";
 
+
 const ButtonDeletarPlaylist = styled.button`
   background-color: #07C6FD;
   border: none;
@@ -18,7 +19,6 @@ const ButtonDeletarPlaylist = styled.button`
       color: white;
     }
 `;
-
 const TituloListaPlaylist = styled.h2`
   color: white;
   padding: 5px 50px;
@@ -30,7 +30,6 @@ const TituloListaPlaylist = styled.h2`
   margin-top: -50px;
   
 `;
-
 const DivContainer = styled.div`
   display: flex;
   flex-direction: column;
