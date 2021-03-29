@@ -95,7 +95,7 @@ const BotaoAdicionarMusica = styled.button`
 
 export default class App extends React.Component {
   state = {
-    pagina: "adicionarMusica",
+    pagina: "criarPlaylist",
   };
 
   mudarPagina = () => {
