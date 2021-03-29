@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { baseUrl, axiosConfig } from "../Parametros";
+import Musicas from "./Musicas";
 
 
 const CriarPlaylistContainer = styled.div`
@@ -32,8 +33,8 @@ const DivInput = styled.input`
     border: none;
     border-bottom: 2px solid #D643AD;
     border-top: 2px solid #07C6FD;
-`
-const ButtonVerPlaylist = styled.button`
+`;
+const BotaoCriarPlaylist = styled.button`
   background-color: #D643AD;
   border: none;
   color: white;
@@ -45,6 +46,7 @@ const ButtonVerPlaylist = styled.button`
   background-image: linear-gradient(to left, #D643AD, #07C6FD);
   width: 70px;
   margin-left: 65px;
+  cursor: pointer;
   &:hover{
     background-color: #07C6FD;
     color: white;
@@ -74,14 +76,15 @@ export default class CriarPlaylist extends React.Component {
       .post(baseUrl, body, axiosConfig)
       .then((res) => {
         console.log(res);
-        alert("Playlist cadastrada com sucesso");
+        alert("Playlist cadastrada com sucesso!");
         this.setState({ nomePlaylist: "" });
       })
       .catch((error) => {
-        alert("Falha ao criar playlist");
+        alert("Falha ao criar playlist!");
         console.log(error);
       });
   };
+
 
   render() {
     return (
@@ -92,10 +95,10 @@ export default class CriarPlaylist extends React.Component {
             onChange={this.handleNomePlaylist}
             value={this.state.nomePlaylist}
           />
-
-          <ButtonVerPlaylist onClick={this.criarPlaylist}>
+          <BotaoCriarPlaylist onClick={this.criarPlaylist}>
             Criar
-          </ButtonVerPlaylist>
+          </BotaoCriarPlaylist>
+
         </DivInputButton>
       </CriarPlaylistContainer>
     );

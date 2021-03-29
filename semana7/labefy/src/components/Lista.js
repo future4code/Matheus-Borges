@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { baseUrl, axiosConfig } from "../Parametros";
+import Musicas from './Musicas'
 
 
 const ButtonDeletarPlaylist = styled.button`
@@ -14,6 +15,7 @@ const ButtonDeletarPlaylist = styled.button`
   background-color: #D643AD;
   background-image: linear-gradient(to left, #D643AD, #07C6FD);
   color: white;
+  cursor: pointer;
   &:active {
       background: #D643AD;
       color: white;
@@ -43,11 +45,16 @@ const DivLista = styled.div`
     border-top: 2px solid #D643AD;
     border-radius: 20px;
 `;
-
+const NomePlaylist = styled.p`
+  color: white;
+  cursor: pointer;
+`
 
 export default class Lista extends React.Component {
   state = {
     playlist: [],
+    id: '',
+    pagina: 'lista'
   };
 
   componentDidMount() {
@@ -64,7 +71,7 @@ export default class Lista extends React.Component {
   };
 
   deletarPlaylist = async (id) => {
-    if (window.confirm("Deseja mesmo deletar o usuário")) {
+    if (window.confirm("Deseja mesmo deletar o usuário?")) {
       axios
         .delete(`${baseUrl}/${id}`, axiosConfig)
         .then((res) => {
@@ -77,11 +84,19 @@ export default class Lista extends React.Component {
     }
   };
 
+  mudarPaginaMusica = (musicas) => {
+    if(this.state.pagina === 'lista') {
+      this.setState({pagina: 'musicas', id: musicas})
+    }else{
+      this.setState({pagina: 'lista', id:''})
+    }
+  }
+
   render() {
     const mapPlaylist = this.state.playlist.map((playlist) => {
       return (
         <DivLista key={playlist.id}>
-          <p>{playlist.name}</p>
+          <NomePlaylist onClick={() => this.mudarPaginaMusica(playlist.id)}>{playlist.name}</NomePlaylist>
           <ButtonDeletarPlaylist onClick={() => this.deletarPlaylist(playlist.id)}>
             Deletar
           </ButtonDeletarPlaylist>
@@ -90,8 +105,12 @@ export default class Lista extends React.Component {
     });
     return (
       <DivContainer>
-        <TituloListaPlaylist>Lista de Usuários</TituloListaPlaylist>
-        {mapPlaylist}
+        <TituloListaPlaylist>Playlists</TituloListaPlaylist>
+
+        {this.state.pagina === 'lista' ? mapPlaylist : 
+        <Musicas mudarPaginaMusica={this.mudarPaginaMusica} musicas={this.state.id}
+        />}
+
       </DivContainer>
     );
   }
