@@ -1,17 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import Lista from './Lista'
+import {baseUrl, axiosConfig} from '../Parametro';
 
 
 const DivContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 auto;
     padding: 10px;
-    border: 1px solid #6CBCE1;
-    border-radius: 10px;
     width: 300px;
 `
 const InputContainer = styled.input`
@@ -19,6 +16,7 @@ const InputContainer = styled.input`
     border-bottom: 2px solid #6CBCE1;
     padding: 12px 20px;
     margin: 8px 0;
+    border-radius: 15px;
 `
 const ButtonContainer = styled.button`
     background-color: #6CBCE1;
@@ -29,8 +27,12 @@ const ButtonContainer = styled.button`
     margin: 4px 2px;
     border-radius: 10px;
 `
+const TituloLista = styled.h2`
+    color: #6CBCE1;
+`
 
-class Home extends React.Component {
+
+export default class CriarUsuario extends React.Component {
 
 state = {
     inputName: '',
@@ -50,48 +52,40 @@ createUsuarios = () => {
         name: this.state.inputName,
         email: this.state.inputEmail
     }
+
     axios
-        .post(
-            "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users",
-        body,
-        {
-            headers: {
-                Authorization: 'matheus-borges-cruz'
-            }
-        }
-    )
-    .then((res) => {
-        this.setState({inputName: '', inputEmail: ''});
-        alert('Cadastrado com sucesso!')
-    })
-    .catch((err) => {
-        this.setState({inputName: '', inputEmail: ''});
-        alert('Tente novamente mais tarde')    
-    })
-}
+        .post(baseUrl, body, axiosConfig)
+        .then((res) => {
+            console.log(res);
+            alert('Cadastrado com sucesso!')
+            this.setState({inputName: '', inputEmail: ''});
+        })
+        .catch((err) => {
+            console.log(err);
+            alert('Tente novamente')    
+            this.setState({inputName: '', inputEmail: ''});
+        });
+};
 
     render() { 
         return (
             <DivContainer>
+                <TituloLista>Cadastrar Usuário</TituloLista>
+                
+                <InputContainer
+                onChange={this.handleInputName} 
+                value={this.state.inputName}
+                placeholder={'Apelido'}
+                />
 
                 <InputContainer
-                placeholder={'Apelido'}
-                value={this.state.inputName}
-                onChange={this.handleInputName} 
-                />
-
-                <InputContainer 
-                placeholder={'E-mail'}
-                value={this.state.inputEmail}
                 onChange={this.handleInputEmail} 
+                value={this.state.inputEmail}
+                placeholder={'E-mail'}
                 />
 
-                <ButtonContainer onClick={this.createUsuarios}>Enviar</ButtonContainer>
-
-
+                <ButtonContainer onClick={this.createUsuarios}>Cadastrar</ButtonContainer>
             </DivContainer>
         );
     }
 }
-
-export default Home
