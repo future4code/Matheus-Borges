@@ -1,9 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { ChakraProvider, Center, Flex, Box, Button, Text, Spinner, IconButton, Heading } from "@chakra-ui/react";
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import 
+{ ChakraProvider,
+  Center,
+  Flex,
+  Box,
+  Button,
+  Text,
+  Spinner,
+  IconButton,
+  Heading 
+}from "@chakra-ui/react"
 import { TelaJogo } from './components/TelaJogo'
-import { ListaMatch } from './components/ListaMatch';
+import { ListaMatch } from './components/ListaMatch'
 import { ChevronLeftIcon } from '@chakra-ui/icons'
+import { useMediaQuery } from "@chakra-ui/react"
 
 
 function App() {
@@ -31,14 +42,16 @@ function App() {
 
   return (
     <ChakraProvider>
-      <Center 
+      <Flex
+      maxW='1360px'
+      justifyContent='center' 
       bgGradient="linear(to-l, #01ECF0, #FF0080)"
       h='625px'
       >
         <Box
+        marginTop='20px'
         bgGradient="linear(to-r, #01ECF0, #FF0080)"
         h='570px'
-        w='400px'
         border='1px solid'
         borderColor='black'
         borderRadius='10px'
@@ -76,7 +89,7 @@ function App() {
           </Center>
         </Box>
 
-      </Center>
+      </Flex>
     </ChakraProvider>
   );
 }

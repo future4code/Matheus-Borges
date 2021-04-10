@@ -1,6 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { ChakraProvider, Button, Center, Text, Flex, Image, Spinner, IconButton, Tooltip } from "@chakra-ui/react";
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import 
+{ ChakraProvider,
+  Button, 
+  Center, 
+  Text, 
+  Flex, 
+  Image, 
+  Spinner, 
+  IconButton, 
+  Tooltip 
+} 
+from "@chakra-ui/react"
 import { CloseIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
 import { Base_Url } from '../constants/Constants'
 import imagem_coracao from '../assets/favorite_border_white_24dp.svg'
@@ -58,7 +69,8 @@ export function TelaJogo(props) {
           marginTop='25px'
           w='390px'
           >
-            <Image w='auto' h='350' src={usuario.photo}/>
+            <Image w='360px'
+                    h='350px' src={usuario.photo}/>
             <Text
             marginTop='5px' 
             color="black"
@@ -68,6 +80,7 @@ export function TelaJogo(props) {
               {usuario.name} {usuario.age}
             </Text>
             <Text
+            marginLeft='25px'
             color="black"
             fontWeight="extrabold" 
             as="abbr">

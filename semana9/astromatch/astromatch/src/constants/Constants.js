@@ -1,1 +1,1 @@
-export const Base_Url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/darvas'
+export const Base_Url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:aluno'

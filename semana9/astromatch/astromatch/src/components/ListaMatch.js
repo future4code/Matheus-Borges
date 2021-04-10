@@ -1,6 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { ChakraProvider, Text, Image, Center, Spinner, StackDivider } from "@chakra-ui/react";
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import 
+{   ChakraProvider, 
+    Text, 
+    Image, 
+    Center, 
+    Spinner, 
+    StackDivider,
+    Square,
+    Circle,
+    Container   
+} from "@chakra-ui/react"
 import { Base_Url } from '../constants/Constants'
 
 
@@ -24,11 +34,11 @@ export function ListaMatch(props) {
 
       const deuMatch = matches.map((match) => {
           return(
-            <Text
+            <Container  
             border='1px solid'
             borderColor='#FF0080'
             padding='5px'
-            w='290px' 
+            w='370px' 
             margin='2'
             borderRadius='10px'
             _hover={{
@@ -44,7 +54,7 @@ export function ListaMatch(props) {
                     {match.name}
                 </Text>
               <Text>{match.bio}</Text>
-          </Text>
+          </Container  >
           );
       })
     return (
