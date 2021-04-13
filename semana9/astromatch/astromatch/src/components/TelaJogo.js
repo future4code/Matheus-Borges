@@ -21,8 +21,6 @@ import imagem_limpar from '../assets/clear_all_white_24dp.svg'
 export function TelaJogo(props) {
   const [usuario, setUsuario] = useState({})
 
-
-
   const pegarUsuario = async () => {
     try {
       const response = await axios.get(`${Base_Url}/person`)
