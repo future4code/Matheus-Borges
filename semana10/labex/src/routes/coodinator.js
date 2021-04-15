@@ -19,8 +19,8 @@ export const goToLoginPage = (history) => {
 export const goToApplication = (history) => {
   history.push("/application-form");
 };
-// export const goToHomePage = (history) => {
-//   history.push("/");
+// export const goToTripsDetail = (history, id) => {
+//   history.push("/trip-details/${id}");
 // };
 // export const goToHomePage = (history) => {
 //   history.push("/");

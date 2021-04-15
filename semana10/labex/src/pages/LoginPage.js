@@ -1,17 +1,20 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Center } from "@chakra-ui/react"
 import { Input, InputGroup, InputRightElement, Button, IconButton, Heading, Box } from "@chakra-ui/react"
-import { useHistory } from "react-router-dom"
-import { goToLastPage } from '../routes/coodinator'
+import { useHistory, useParams } from "react-router-dom"
+import { goToHomePage } from '../routes/coodinator'
+import { Base_Url } from '../constants/Urls'
 import axios from 'axios'
-import { useRequestDataPost } from '../Hooks/useRequestData'
 
 
 const LoginPage = () => {
   const [show, setShow] = useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   
   const history = useHistory();
+  const params = useParams()
 
   const handleMostrarSenha = () => setShow(!show)
 
@@ -23,12 +26,25 @@ const LoginPage = () => {
     setPassword(event.target.value)
   }
 
-  const inputFazerLogin = (event) => {
-    useRequestDataPost('/login')
+  const inputFazerLogin = (id) => {
+    const body = {
+      email: email,
+      password: password
+    }
+      axios
+          .post(`${Base_Url}/login`, body)
+          .then((res) => {
+            window.localStorage.setItem('token', res.data.token)
+            history.push(`/list-trips`)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
   }
 
   return (
-    <Box>
+    <Box
+    h='625px'>
       <Center>
         <Heading marginTop='200px'
         bgGradient={[
@@ -44,7 +60,8 @@ const LoginPage = () => {
           <Input
           value={email}
           onChange={handleEmail} 
-          type='email' 
+          type='email'
+          color='white' 
           variant="flushed" 
           placeholder="E-mail" 
           marginTop='50px' 
@@ -111,7 +128,7 @@ const LoginPage = () => {
           _active={{
             bg:'#009CD0'
           }} 
-          onClick={() => goToLastPage(history)}>Voltar
+          onClick={() => goToHomePage(history)}>Voltar
           </Button>
 
           <Button
@@ -129,7 +146,7 @@ const LoginPage = () => {
           }}
           _active={{
             bg:'#009CD0'
-          }}>Fazer Login
+          }}>Login
           </Button>
         </Center>
     </Box>

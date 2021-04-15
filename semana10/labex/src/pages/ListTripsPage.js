@@ -1,20 +1,54 @@
 import React from 'react'
-import { Center, Button, Box, Heading } from "@chakra-ui/react"
+import { Center, Button, Box, Heading, Spinner, Square, Text, LinkBox, LinkOverlay, Tooltip  } from "@chakra-ui/react"
 import { useHistory } from "react-router-dom"
-import {goToLastPage, goToApplication} from '../routes/coodinator'
+import {goToLastPage, goToApplication, goToLoginPage} from '../routes/coodinator'
 import {useRequestData} from '../Hooks/useRequestData' 
 
 const ListTripsPage = () => {
   const history = useHistory();
 
-  const tripsList = useRequestData('/trips', {})
-  console.log(tripsList)
+  const goToDetailPage = (id) => {
+    history.push(`/details/${id}`)
+  }
 
-  const tripsComponents = tripsList.results && tripsList.results.map((trips) => {
-    return <p>{trips.id}</p>
+  const tripsList = useRequestData('/trips', {})
+
+  const tripsComponents = tripsList.trips && tripsList.trips.map((trips) => {
+    return <Tooltip 
+    hasArrow label="Clique e faça o Login para saber mais!"
+    placement="right-start" 
+    bgGradient={[
+      "linear(to-b, teal.100,#E9C5C7)",
+      "linear(to-t, #FEEFF6, teal.400)",
+      "linear(to-tr, #009CD0, #090954)",
+    ]}  color="white">
+              <LinkBox
+                cursor='pointer'
+                as="article"
+                bgGradient={[
+                  "linear(to-b, teal.100,#E9C5C7)",
+                  "linear(to-t, #FEEFF6, teal.400)",
+                  "linear(to-tr, #009CD0, #090954)",
+                ]} 
+                border='2px solid #009CD0' 
+                padding='5px' 
+                borderRadius='15px' 
+                w='440px' 
+                h='90px' 
+                marginTop='30px' 
+                marginLeft='460px'  
+                color='white'>
+                <LinkOverlay onClick={() => goToDetailPage(trips.id)}>
+                <Text>Viagem: {trips.name}</Text>
+                <Text>Planeta: {trips.planet}</Text>
+                <Text>Data: {trips.date}</Text>
+                </LinkOverlay>
+              </LinkBox>
+            </Tooltip>
   })
   return (
-    <Box>
+    <Box
+    h='700px'>
       <Center justifyContent='space-around'>
         <Button
         marginTop='70px'
@@ -60,8 +94,18 @@ const ListTripsPage = () => {
         ]}
         bgClip="text" 
         marginTop='20px'>Lista de Viagens</Heading>
-        {tripsList}
       </Center>
+        {tripsComponents && tripsComponents.length > 0 ? tripsComponents 
+        : 
+        <Spinner
+        marginTop='100px'
+        marginLeft='650px'   
+        thickness="4px"
+        speed="0.75s"
+        emptyColor="gray.200"
+        color="#009CD0"
+        size="xl"
+        />}
     </Box>
   );
 }

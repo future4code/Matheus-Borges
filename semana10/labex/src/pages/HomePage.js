@@ -15,7 +15,8 @@ const HomePage = () => {
   const history = useHistory();
 
   return (
-    <Box>
+    <Box
+    h='625px'>
       <Center>
         <Heading
         size='4xl'         
@@ -49,7 +50,8 @@ const HomePage = () => {
         _hover={{
           borderColor:'#009CD0',
         }} />}     
-        onClick={() => goToTripList(history)}>Ver Viagens
+        onClick={() => goToTripList(history)}>
+          Ver Viagens
         </Button>
 
         <Button
@@ -71,7 +73,8 @@ const HomePage = () => {
         _hover={{
           borderColor:'#009CD0',
         }} />}     
-        onClick={() => goToLoginPage(history)}>Área de Admin
+        onClick={() => goToLoginPage(history)}>
+          Fazer Login
         </Button>
       </Center>
     </Box>
