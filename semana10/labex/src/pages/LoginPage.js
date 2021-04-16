@@ -1,35 +1,32 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState } from 'react'
 import { Center } from "@chakra-ui/react"
-import { Input, InputGroup, InputRightElement, Button, IconButton, Heading, Box } from "@chakra-ui/react"
-import { useHistory, useParams } from "react-router-dom"
+import { Input, InputGroup, InputRightElement, Button, Heading, Box } from "@chakra-ui/react"
+import { useHistory } from "react-router-dom"
 import { goToHomePage } from '../routes/coodinator'
 import { Base_Url } from '../constants/Urls'
 import axios from 'axios'
 
 
+
 const LoginPage = () => {
   const [show, setShow] = useState(false)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [form, setForm] = useState({ email: '', password: ''})
 
   
   const history = useHistory();
-  const params = useParams()
 
   const handleMostrarSenha = () => setShow(!show)
 
-  const handleEmail = (event) => {
-    setEmail(event.target.value)
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+
+    setForm({ ...form, [name]: value });
   }
 
-  const handlePassword = (event) => {
-    setPassword(event.target.value)
-  }
-
-  const inputFazerLogin = (id) => {
+  const fazerLogin = (id) => {
     const body = {
-      email: email,
-      password: password
+      email: form.email,
+      password: form.password
     }
       axios
           .post(`${Base_Url}/login`, body)
@@ -41,6 +38,7 @@ const LoginPage = () => {
             console.log(error)
           })
   }
+console.log(form)
 
   return (
     <Box
@@ -58,8 +56,9 @@ const LoginPage = () => {
       </Center>
         <Center>
           <Input
-          value={email}
-          onChange={handleEmail} 
+          name='email'
+          value={form.email}
+          onChange={handleInputChange} 
           type='email'
           color='white' 
           variant="flushed" 
@@ -73,8 +72,9 @@ const LoginPage = () => {
         <Center>
           <InputGroup size="md" w='400px' marginTop='20px'>
             <Input
-              value={password}
-              onChange={handlePassword} 
+              name='password'
+              value={form.password}
+              onChange={handleInputChange} 
               color='white'
               variant="flushed"
               type={show ? "text" : "password"}
@@ -132,7 +132,7 @@ const LoginPage = () => {
           </Button>
 
           <Button
-          onClick={inputFazerLogin}
+          onClick={fazerLogin}
           variant='outline'
           color='white'
           borderColor='white'

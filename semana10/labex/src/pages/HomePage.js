@@ -1,6 +1,6 @@
 import React from 'react'
-import { Center, Button, Box, Square, IconButton, Heading, Tooltip, Spinner, Image  } from "@chakra-ui/react"
-import { MoonIcon, SunIcon, StarIcon } from '@chakra-ui/icons'
+import { Center, Button, Box, Heading, Image  } from "@chakra-ui/react"
+import { MoonIcon, StarIcon } from '@chakra-ui/icons'
 import { useHistory } from "react-router-dom"
 import { goToTripListPage, goToAdminHomePage } from '../routes/coodinator'
 import imagem_astronauta from '../Assets/Images/imagens-de-tela-de-fundo-astronautas-removebg-preview.png'

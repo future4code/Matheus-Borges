@@ -1,16 +1,15 @@
 import React from 'react'
-import { ChakraProvider } from "@chakra-ui/react"
+import { Box, Heading } from "@chakra-ui/react"
 import { Center } from "@chakra-ui/react"
-import { Image } from "@chakra-ui/react"
 
 
 function ErrorPage() {
   return (
-    <ChakraProvider>
+    <Box>
       <Center>
-        <p>Error 404</p>
+        <Heading>Error 404</Heading>
       </Center>
-    </ChakraProvider>
+    </Box>
   );
 }
 

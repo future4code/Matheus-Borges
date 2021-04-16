@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Center, Box, Heading, Text, Button, Spinner } from "@chakra-ui/react"
+import { Box, Heading, Text, Button, Spinner } from "@chakra-ui/react"
 import { Base_Url } from '../constants/Urls'
 import axios from 'axios'
 import { useHistory } from "react-router-dom"
@@ -31,7 +31,6 @@ const TripDetailsPage = () => {
       console.log(error)
     })
   }
-  console.log(trip)
 
   const logout = () => {
     window.localStorage.removeItem('token')
@@ -39,27 +38,28 @@ const TripDetailsPage = () => {
   }
 
   const componentsCandidates = trip.candidates && trip.candidates.map((trips) => {
-    return       <Box
-                    as="article"
-                    bgGradient={[
-                      "linear(to-b, teal.100,#E9C5C7)",
-                      "linear(to-t, #FEEFF6, teal.400)",
-                      "linear(to-tr, #009CD0, #090954)",
-                    ]} 
-                    border='2px solid #009CD0' 
-                    padding='10px' 
-                    borderRadius='15px' 
-                    w='440px' 
-                    h='170px' 
-                    marginTop='50px'  
-                    marginLeft='465px'  
-                    color='white'>
-                      <Text>Candidato: {trips.name}</Text>
-                      <Text>Idade: {trips.age}</Text>
-                      <Text>Profissão: {trips.profession}</Text>
-                      <Text>Descrição: {trips.applicationText}</Text>
-                      <Text>País: {trips.country}</Text>
-                  </Box> 
+    return   <Box
+                key={trips.name} 
+                as="article"
+                bgGradient={[
+                  "linear(to-b, teal.100,#E9C5C7)",
+                  "linear(to-t, #FEEFF6, teal.400)",
+                  "linear(to-tr, #009CD0, #090954)",
+                ]} 
+                border='2px solid #009CD0' 
+                padding='10px' 
+                borderRadius='15px' 
+                w='440px' 
+                h='170px' 
+                marginTop='50px'  
+                marginLeft='465px'  
+                color='white'>
+                  <Text>Candidato: {trips.name}</Text>
+                  <Text>Idade: {trips.age}</Text>
+                  <Text>Profissão: {trips.profession}</Text>
+                  <Text>Descrição: {trips.applicationText}</Text>
+                  <Text>País: {trips.country}</Text>
+              </Box> 
   })
   
   return (

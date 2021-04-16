@@ -1,5 +1,5 @@
 import React from 'react'
-import { Center, Button, Box, Heading, Spinner, Square, Text, LinkBox, LinkOverlay, Tooltip  } from "@chakra-ui/react"
+import { Center, Button, Box, Heading, Spinner, Text, LinkBox, LinkOverlay, Tooltip  } from "@chakra-ui/react"
 import { useHistory } from "react-router-dom"
 import { goToLastPage, goToApplicationPage } from '../routes/coodinator'
 import { useRequestData } from '../Hooks/useRequestData' 
@@ -14,7 +14,8 @@ const ListTripsPage = () => {
   const tripsList = useRequestData('/trips', {})
 
   const tripsComponents = tripsList.trips && tripsList.trips.map((trips) => {
-    return <Tooltip 
+    return <Tooltip
+    key={trips.name} 
     hasArrow label="Clique e faça o Login para saber sobre os candidatos!"
     placement="right-start" 
     bgGradient={[
@@ -39,11 +40,11 @@ const ListTripsPage = () => {
                 marginLeft='460px'  
                 color='white'>
                 <LinkOverlay onClick={() => goToDetailPage(trips.id)}>
-                <Text>Viagem: {trips.name}</Text>
-                <Text>Planeta: {trips.planet}</Text>
-                <Text>Descrição: {trips.description}</Text>
-                <Text>Duração: {trips.durationInDays}</Text>
-                <Text>Data: {trips.date}</Text>
+                  <Text>Viagem: {trips.name}</Text>
+                  <Text>Planeta: {trips.planet}</Text>
+                  <Text>Descrição: {trips.description}</Text>
+                  <Text>Duração: {trips.durationInDays}</Text>
+                  <Text>Data: {trips.date}</Text>
                 </LinkOverlay>
               </LinkBox>
             </Tooltip>

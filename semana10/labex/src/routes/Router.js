@@ -30,7 +30,7 @@ const Router = () => {
             <Switch>
                 <Route exact path='/admin-home'><AdminHomePage/></Route>
 
-                <Route exact path='/application-form'><ApplicationFormPage/></Route>
+                <Route exact path='/application-form/'><ApplicationFormPage/></Route>
 
                 <Route exact path='/create-trip'><CreateTripPage/></Route>
 

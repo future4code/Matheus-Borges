@@ -1,6 +1,6 @@
 import React from 'react'
-import { ChakraProvider, IconButton } from "@chakra-ui/react"
-import { Square, Box } from "@chakra-ui/react"
+import { ChakraProvider } from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
 import {theme} from './constants/Theme'
 import Router from './routes/Router'
 
@@ -16,6 +16,7 @@ const App = () => {
         "linear(to-b, black, #090954)",
       ]}
       >
+        
       <Router  />
       <footer>
 

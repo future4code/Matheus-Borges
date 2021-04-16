@@ -1,15 +1,25 @@
 import React, { useState } from 'react'
-import { Box, Button, Center, Heading, Input, Text, Select } from "@chakra-ui/react"
+import { Box, Button, Center, Heading, Input, Select } from "@chakra-ui/react"
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import { countries } from '../constants/Countries'
 import { goToTripListPage } from '../routes/coodinator'
-import { useHistory } from 'react-router'
+import { useHistory, useParams } from 'react-router'
+import axios from 'axios'
+import { Base_Url } from '../constants/Urls'
+import { useRequestData } from '../Hooks/useRequestData' 
+
 
 const applicationForm = { nome: '', idade: '', descricao: '', profissao: '', selectViagem: '', selectPais: '' }
 
 const ApplicationFormPage = () => {
   const [form, setForm] = useState(applicationForm)
+  const [tripId, setTripId] = useState('')
+
+  const TripsSelect = useRequestData('/trips', {})
+
+
   const history = useHistory()
+  const params = useParams()
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -17,9 +27,33 @@ const ApplicationFormPage = () => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleClick = () => {
-    console.log(form);
+  const handleChangeTrip = (event) => {
+    setTripId(event.target.value)
   }
+
+  const fazerAplicacao = (id) => {
+    const token = window.localStorage.getItem('token')
+    const body = {
+      name: form.nome,
+      age: form.idade,
+      description: form.descricao,
+      profission: form.profissao,
+      country: form.selectPais
+    }
+      axios
+        .post(`${Base_Url}/trips/${params.id}/apply`, body, {
+          headers:{
+            auth: token
+          }
+        })
+        .then((res) => {
+          alert(res.data.massage)
+        })
+        .catch((error) => {
+          console.log(error.response)
+        })
+      }
+
 
   return (
     <Box h='625px'>
@@ -40,7 +74,7 @@ const ApplicationFormPage = () => {
       <Select
         name='selectViagem'
         value={form.selectViagem}
-        onChange={handleInputChange} 
+        onChange={handleChangeTrip} 
         borderRadius='10px'
         borderColor='#009CD0'
         variant="flushed" 
@@ -48,9 +82,9 @@ const ApplicationFormPage = () => {
         icon={<ChevronDownIcon />} 
         placeholder="Escolha uma viagem!" 
         >
-        <option>opcao 1</option>
-        <option>opcao 2</option>
-        <option>opcao 3</option>
+        {TripsSelect.trips && TripsSelect.trips.map((trips) => {
+          return <option key={trips.id} value={trips.id}>{trips.name}</option>
+        })}
         </Select>
         <Input
           isRequired
@@ -63,7 +97,6 @@ const ApplicationFormPage = () => {
           placeholder="Nome"
           borderRadius='10px'
           borderColor='#009CD0'
-          color='white' 
           marginTop='20px'
         />
         <Input 
@@ -76,7 +109,6 @@ const ApplicationFormPage = () => {
           placeholder="Idade"
           borderRadius='10px'
           borderColor='#009CD0'
-          color='white' 
           marginTop='20px'
         />
         <Input 
@@ -89,7 +121,6 @@ const ApplicationFormPage = () => {
           placeholder="Descrição"
           borderRadius='10px'
           borderColor='#009CD0'
-          color='white' 
           marginTop='20px'
         />
         <Input 
@@ -102,7 +133,6 @@ const ApplicationFormPage = () => {
           placeholder="Profissão"
           borderRadius='10px'
           borderColor='#009CD0'
-          color='white' 
           marginTop='20px'
         />
         <Select 
@@ -141,7 +171,7 @@ const ApplicationFormPage = () => {
         </Button>
 
         <Button
-          onClick={handleClick} 
+          onClick={fazerAplicacao} 
           variant='outline'
           color='white'
           borderColor='white'

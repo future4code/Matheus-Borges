@@ -3,9 +3,16 @@ import {Center, Box, Heading, Button, Image, Spinner} from "@chakra-ui/react"
 import { useHistory } from 'react-router';
 import { goToTripListPage, goToCreateTripPage } from '../routes/coodinator'
 import imagem_astronauta from '../Assets/Images/imagens-de-tela-de-fundo-astronautas-removebg-preview.png'
-import { Icon, StarIcon } from '@chakra-ui/icons'
+import { useProtectedPage } from '../Hooks/useProtectedPage'
+
 
 const AdminHomePage = () => {
+
+  useProtectedPage()
+  const logout = () => {
+    window.localStorage.removeItem('token')
+    history.push('/login')
+  }
 
   const history = useHistory()
 
@@ -23,6 +30,26 @@ const AdminHomePage = () => {
           Bem Vindo ao LabeX
         </Heading>
       </Center>
+        <Button
+          variant='outline'
+          color='white'
+          borderColor='white'
+          bgGradient={[
+            "linear(to-b, teal.100,#E9C5C7)",
+            "linear(to-t, #FEEFF6, teal.400)",
+            "linear(to-tr, #009CD0, #090954)",
+          ]}
+          _hover={{
+            borderColor:'#009CD0'
+          }}
+          _active={{
+            bg:'#009CD0'
+          }}  
+          marginLeft='1200px' 
+          marginTop='-65px' 
+          onClick={logout}>
+            Logout
+        </Button>
       <Center>
         {<Image marginTop='30px' objectFit="cover" src={imagem_astronauta} alt='astronauta'/> ? 
         <Image marginTop='30px' objectFit="cover" src={imagem_astronauta} alt='astronauta'/> 
