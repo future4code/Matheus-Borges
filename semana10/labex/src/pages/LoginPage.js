@@ -35,7 +35,7 @@ const LoginPage = () => {
           .post(`${Base_Url}/login`, body)
           .then((res) => {
             window.localStorage.setItem('token', res.data.token)
-            history.push(`/list-trips`)
+            history.push(`/admin-home`)
           })
           .catch((error) => {
             console.log(error)

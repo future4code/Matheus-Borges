@@ -1,9 +1,10 @@
 import React from 'react'
-import { Center, Button, Box, Square, IconButton, Heading, Tooltip, Spinner  } from "@chakra-ui/react"
+import { Center, Button, Box, Square, IconButton, Heading, Tooltip, Spinner, Image  } from "@chakra-ui/react"
 import { MoonIcon, SunIcon, StarIcon } from '@chakra-ui/icons'
-import { Image } from "@chakra-ui/react"
 import { useHistory } from "react-router-dom"
-import { goToTripList, goToLoginPage } from '../routes/coodinator'
+import { goToTripListPage, goToAdminHomePage } from '../routes/coodinator'
+import imagem_astronauta from '../Assets/Images/imagens-de-tela-de-fundo-astronautas-removebg-preview.png'
+
 
 // Passo 01: importar o useHistory
 // Passo 02: const history = useHistory() => guardar o histórico em uma variável
@@ -26,11 +27,14 @@ const HomePage = () => {
           "linear(to-b, #009CD0, yellow.300)",
         ]}
         bgClip="text"
-        marginTop='150px'>
+        >
           LabeX
         </Heading>
       </Center>
-      <Center justifyContent='space-around' marginTop='100px'>
+      <Center>
+        <Image marginLeft='40px' marginTop='15px' objectFit="cover" src={imagem_astronauta} alt='astronauta'/> 
+      </Center>
+      <Center justifyContent='space-around' marginTop='-100px'>
         <Button
         variant='outline'
         color='white'
@@ -50,7 +54,7 @@ const HomePage = () => {
         _hover={{
           borderColor:'#009CD0',
         }} />}     
-        onClick={() => goToTripList(history)}>
+        onClick={() => goToTripListPage(history)}>
           Ver Viagens
         </Button>
 
@@ -73,8 +77,8 @@ const HomePage = () => {
         _hover={{
           borderColor:'#009CD0',
         }} />}     
-        onClick={() => goToLoginPage(history)}>
-          Fazer Login
+        onClick={() => goToAdminHomePage(history)}>
+          Área Admin
         </Button>
       </Center>
     </Box>

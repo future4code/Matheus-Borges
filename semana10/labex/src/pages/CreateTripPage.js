@@ -1,15 +1,14 @@
 import React from 'react'
-import { ChakraProvider } from "@chakra-ui/react"
-import { Center } from "@chakra-ui/react"
-import { Image } from "@chakra-ui/react"
+import { Box, Center, Heading } from "@chakra-ui/react"
+
 
 function CreateTripPage() {
   return (
-    <ChakraProvider>
+    <Box>
       <Center>
-        <p>CreateTripPage</p>
+        <Heading>CreateTripPage</Heading>
       </Center>
-    </ChakraProvider>
+    </Box>
   );
 }
 

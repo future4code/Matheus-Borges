@@ -1,42 +1,33 @@
-export const goToTripList = (history) => {
+export const goToTripListPage = (history) => {
     history.push("/list-trips");
   };
   
-//   export const goToAboutPageEN = (history) => {
-//     history.push("/sobre-este-site/ingles");
-//   };
-  
-//   export const goToContactsPage = (history) => {
-//     history.push("/contatos");
-//   };
-  
-export const goToHomePage = (history) => {
-  history.push("/");
-};
-export const goToLoginPage = (history) => {
-  history.push("/login");
-};
-export const goToApplication = (history) => {
-  history.push("/application-form");
-};
-// export const goToTripsDetail = (history, id) => {
-//   history.push("/trip-details/${id}");
-// };
-// export const goToHomePage = (history) => {
-//   history.push("/");
-// };
-// export const goToHomePage = (history) => {
-//   history.push("/");
-// };
-// export const goToHomePage = (history) => {
-//   history.push("/");
-// };
-
-  export const goToLastPage = (history) => {
-    history.goBack();
+  export const goToHomePage = (history) => {
+    history.push("/");
+  };
+  export const goToLoginPage = (history) => {
+    history.push("/login");
+  };
+  export const goToApplicationPage = (history) => {
+    history.push("/application-form");
+  };
+  export const goToAdminHomePage = (history, id) => {
+    history.push("/admin-home");
+  };
+  export const goToCreateTripPage = (history) => {
+    history.push("/create-trip");
   };
   
-  // export const goToPage = (history, page) => {
-  //   history.push(page)
-  // }
+    export const goToLastPage = (history) => {
+      history.goBack();
+    };
+    
+
+  //   export const goToAboutPageEN = (history) => {
+  //     history.push("/sobre-este-site/ingles");
+  //   };
+    
+  //   export const goToContactsPage = (history) => {
+  //     history.push("/contatos");
+  //   };
   

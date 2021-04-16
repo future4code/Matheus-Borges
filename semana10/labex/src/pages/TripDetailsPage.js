@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Center, Box, Heading, Text, Button, Square } from "@chakra-ui/react"
+import { Center, Box, Heading, Text, Button, Spinner } from "@chakra-ui/react"
 import { Base_Url } from '../constants/Urls'
 import axios from 'axios'
 import { useHistory } from "react-router-dom"
 import { useProtectedPage } from '../Hooks/useProtectedPage'
 import {useParams} from 'react-router-dom'
+import { goToTripListPage } from '../routes/coodinator'
 
 
 const TripDetailsPage = () => {
@@ -25,22 +26,45 @@ const TripDetailsPage = () => {
         auth: token
       }
     }).then((res) => {
-      console.log(res.data.trip)
       setTrip(res.data.trip)
     }).catch((error) => {
       console.log(error)
     })
   }
+  console.log(trip)
 
   const logout = () => {
     window.localStorage.removeItem('token')
     history.push('/login')
   }
 
+  const componentsCandidates = trip.candidates && trip.candidates.map((trips) => {
+    return       <Box
+                    as="article"
+                    bgGradient={[
+                      "linear(to-b, teal.100,#E9C5C7)",
+                      "linear(to-t, #FEEFF6, teal.400)",
+                      "linear(to-tr, #009CD0, #090954)",
+                    ]} 
+                    border='2px solid #009CD0' 
+                    padding='10px' 
+                    borderRadius='15px' 
+                    w='440px' 
+                    h='170px' 
+                    marginTop='50px'  
+                    marginLeft='465px'  
+                    color='white'>
+                      <Text>Candidato: {trips.name}</Text>
+                      <Text>Idade: {trips.age}</Text>
+                      <Text>Profissão: {trips.profession}</Text>
+                      <Text>Descrição: {trips.applicationText}</Text>
+                      <Text>País: {trips.country}</Text>
+                  </Box> 
+  })
   
   return (
-    <Box h='625px'>
-      <Box w='1355px'>
+    <Box h='750px'>
+      <Box w='1300px'>
         <Heading
           bgGradient={[
             "linear(to-tr, teal.300,orange.200)",
@@ -71,25 +95,38 @@ const TripDetailsPage = () => {
           onClick={logout}>
             Logout
         </Button>
+        <Button 
+          variant='outline'
+          color='white'
+          borderColor='white'
+          bgGradient={[
+            "linear(to-b, teal.100,#E9C5C7)",
+            "linear(to-t, #FEEFF6, teal.400)",
+            "linear(to-tr, #009CD0, #090954)",
+          ]}
+          _hover={{
+            borderColor:'#009CD0'
+          }}
+          _active={{
+            bg:'#009CD0'
+          }}
+          marginTop='-115px' 
+          marginLeft='40px'
+          onClick={() => goToTripListPage(history)}>
+            Ver Viagens
+        </Button>
       </Box>
-      <Box
-        as="article"
-        bgGradient={[
-          "linear(to-b, teal.100,#E9C5C7)",
-          "linear(to-t, #FEEFF6, teal.400)",
-          "linear(to-tr, #009CD0, #090954)",
-        ]} 
-        border='2px solid #009CD0' 
-        padding='10px' 
-        borderRadius='15px' 
-        w='440px' 
-        h='180px' 
-        marginTop='150px'  
-        marginLeft='465px'  
-        color='white'>
-        <Text>{trip.name}</Text>
-        <Text>Duração: {trip.age}</Text>
-      </Box>
+      {componentsCandidates && componentsCandidates.length > 0 ? componentsCandidates 
+      :
+      <Spinner
+        marginTop='100px'
+        marginLeft='650px'   
+        thickness="4px"
+        speed="0.75s"
+        emptyColor="gray.200"
+        color="#009CD0"
+        size="xl"
+        />}
     </Box>
   );
 }

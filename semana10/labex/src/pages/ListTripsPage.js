@@ -1,8 +1,8 @@
 import React from 'react'
 import { Center, Button, Box, Heading, Spinner, Square, Text, LinkBox, LinkOverlay, Tooltip  } from "@chakra-ui/react"
 import { useHistory } from "react-router-dom"
-import {goToLastPage, goToApplication, goToLoginPage} from '../routes/coodinator'
-import {useRequestData} from '../Hooks/useRequestData' 
+import { goToLastPage, goToApplicationPage } from '../routes/coodinator'
+import { useRequestData } from '../Hooks/useRequestData' 
 
 const ListTripsPage = () => {
   const history = useHistory();
@@ -15,7 +15,7 @@ const ListTripsPage = () => {
 
   const tripsComponents = tripsList.trips && tripsList.trips.map((trips) => {
     return <Tooltip 
-    hasArrow label="Clique e faça o Login para saber mais!"
+    hasArrow label="Clique e faça o Login para saber sobre os candidatos!"
     placement="right-start" 
     bgGradient={[
       "linear(to-b, teal.100,#E9C5C7)",
@@ -34,13 +34,15 @@ const ListTripsPage = () => {
                 padding='5px' 
                 borderRadius='15px' 
                 w='440px' 
-                h='90px' 
+                h='160px' 
                 marginTop='30px' 
                 marginLeft='460px'  
                 color='white'>
                 <LinkOverlay onClick={() => goToDetailPage(trips.id)}>
                 <Text>Viagem: {trips.name}</Text>
                 <Text>Planeta: {trips.planet}</Text>
+                <Text>Descrição: {trips.description}</Text>
+                <Text>Duração: {trips.durationInDays}</Text>
                 <Text>Data: {trips.date}</Text>
                 </LinkOverlay>
               </LinkBox>
@@ -48,7 +50,7 @@ const ListTripsPage = () => {
   })
   return (
     <Box
-    h='700px'>
+    h='970px'>
       <Center justifyContent='space-around'>
         <Button
         marginTop='70px'
@@ -83,7 +85,7 @@ const ListTripsPage = () => {
         _active={{
           bg:'#009CD0'
         }}  
-        onClick={() => goToApplication(history)}>Inscrever-se</Button>
+        onClick={() => goToApplicationPage(history)}>Inscrever-se</Button>
       </Center>
       <Center>
         <Heading
