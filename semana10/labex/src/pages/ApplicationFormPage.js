@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Button, Center, Heading, Input, Select } from "@chakra-ui/react"
+import { Box, Button, Center, Heading, Input, Select, useToast } from "@chakra-ui/react"
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import { countries } from '../constants/Countries'
 import { goToTripListPage } from '../routes/coodinator'
@@ -9,54 +9,76 @@ import { Base_Url } from '../constants/Urls'
 import { useRequestData } from '../Hooks/useRequestData' 
 
 
-const applicationForm = { nome: '', idade: '', descricao: '', profissao: '', selectViagem: '', selectPais: '' }
+const inicialForm = { nome: '', idade: '', descricao: '', profissao: '', selectPais: '' }
 
 const ApplicationFormPage = () => {
-  const [form, setForm] = useState(applicationForm)
+  const [form, setForm] = useState(inicialForm)
   const [tripId, setTripId] = useState('')
 
-  const TripsSelect = useRequestData('/trips', {})
+  const status = ["success", "error", "warning", "info"]
+  const toast = useToast()
 
+  const tripsSelect = useRequestData(`/trips`, {})
 
   const history = useHistory()
   const params = useParams()
 
+  
+  const handleChangeTrip = (event) => {
+    setTripId(event.target.value)
+  }
+  
+  const fazerAplicacao = () => {
+    const token = window.localStorage.getItem('token')
+    const body = {
+      name: form.nome,
+      age: form.idade,
+      applicationText: form.descricao,
+      profession: form.profissao,
+      country: form.selectPais
+    }
+    axios
+    .post(`${Base_Url}/trips/${tripId}/apply`, body, {
+      headers:{
+        auth: token
+      }
+    })
+    .then((res) => {
+      const subscriptionAlert = tripsSelect.trips.filter(trip => trip.id === tripId)
+        toast({
+            title: 'Cadastrado com Sucesso!',
+            variant: 'left-accent',
+            status: 'success',
+            description: `Sua inscrição está em ${subscriptionAlert[0].name}`,
+            duration: 9000,
+            position:"bottom-right",
+            isClosable: true,
+          }
+        )
+        setForm(inicialForm)
+        setTripId('') 
+      })
+      .catch((error) => {
+        toast({
+          title: `Erro ao Fazer inscrição!`,
+          description: `Certifique-se que todos os campos foram preenchidos corretamente!`,
+          status: 'error',
+          variant: 'left-accent',
+          position:"bottom-left",
+          isClosable: true,
+        })
+    })
+  }
+  
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
     setForm({ ...form, [name]: value });
   };
 
-  const handleChangeTrip = (event) => {
-    setTripId(event.target.value)
-  }
-
-  const fazerAplicacao = (id) => {
-    const token = window.localStorage.getItem('token')
-    const body = {
-      name: form.nome,
-      age: form.idade,
-      description: form.descricao,
-      profission: form.profissao,
-      country: form.selectPais
-    }
-      axios
-        .post(`${Base_Url}/trips/${params.id}/apply`, body, {
-          headers:{
-            auth: token
-          }
-        })
-        .then((res) => {
-          alert(res.data.massage)
-        })
-        .catch((error) => {
-          console.log(error.response)
-        })
-      }
-
 
   return (
-    <Box h='625px'>
+    <Box>
       <Center>
         <Heading
             marginTop='50px'
@@ -70,23 +92,27 @@ const ApplicationFormPage = () => {
               Inscrição
         </Heading>
       </Center>
-      <Box marginTop='30px' w='400px' marginLeft='480px'>
+      <Box marginTop='30px' >
+
       <Select
-        name='selectViagem'
-        value={form.selectViagem}
+        marginLeft='470px'
+        w='400px'      
+        value={tripId}
         onChange={handleChangeTrip} 
         borderRadius='10px'
         borderColor='#009CD0'
         variant="flushed" 
-        color='gray.400' 
+        color='gray.400'
         icon={<ChevronDownIcon />} 
-        placeholder="Escolha uma viagem!" 
+        placeholder="Escolha um Destino!" 
         >
-        {TripsSelect.trips && TripsSelect.trips.map((trips) => {
+        {tripsSelect.trips && tripsSelect.trips.map((trips) => {
           return <option key={trips.id} value={trips.id}>{trips.name}</option>
         })}
         </Select>
         <Input
+          marginLeft='470px'
+          w='400px' 
           isRequired
           name='nome'
           value={form.nome}
@@ -99,7 +125,9 @@ const ApplicationFormPage = () => {
           borderColor='#009CD0'
           marginTop='20px'
         />
-        <Input 
+        <Input
+          marginLeft='470px'
+          w='400px'  
           name= 'idade'
           value={form.idade}
           onChange={handleInputChange}
@@ -111,7 +139,9 @@ const ApplicationFormPage = () => {
           borderColor='#009CD0'
           marginTop='20px'
         />
-        <Input 
+        <Input
+          marginLeft='470px'
+          w='400px'  
           name= 'descricao'
           value={form.descricao}
           onChange={handleInputChange} 
@@ -123,7 +153,9 @@ const ApplicationFormPage = () => {
           borderColor='#009CD0'
           marginTop='20px'
         />
-        <Input 
+        <Input
+          marginLeft='470px'
+          w='400px'  
           name='profissao'
           value={form.profissao}
           onChange={handleInputChange} 
@@ -135,7 +167,9 @@ const ApplicationFormPage = () => {
           borderColor='#009CD0'
           marginTop='20px'
         />
-        <Select 
+        <Select
+          marginLeft='470px'
+          w='400px'  
           name='selectPais'
           value={form.selectPais}
           onChange={handleInputChange} 
@@ -149,9 +183,11 @@ const ApplicationFormPage = () => {
         >
           {countries.map((country) => {
               return <option key={country}>{country}</option>
-          })}
+            })}
         </Select>
         <Button
+        marginLeft='470px'
+        marginTop='20px' 
         variant='outline'
         color='white'
         borderColor='white'
@@ -184,11 +220,11 @@ const ApplicationFormPage = () => {
             borderColor:'#009CD0'
           }}
           _active={{
-
+            
             bg:'#009CD0'
           }}
           marginTop='20px' 
-          marginLeft='150px'>
+          marginLeft='182px'>
             Inscrever
         </Button>
       </Box>

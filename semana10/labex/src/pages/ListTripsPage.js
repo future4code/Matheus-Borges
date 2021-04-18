@@ -1,7 +1,7 @@
 import React from 'react'
 import { Center, Button, Box, Heading, Spinner, Text, LinkBox, LinkOverlay, Tooltip  } from "@chakra-ui/react"
 import { useHistory } from "react-router-dom"
-import { goToLastPage, goToApplicationPage } from '../routes/coodinator'
+import { goToHomePage, goToApplicationPage } from '../routes/coodinator'
 import { useRequestData } from '../Hooks/useRequestData' 
 
 const ListTripsPage = () => {
@@ -39,20 +39,21 @@ const ListTripsPage = () => {
                 marginTop='30px' 
                 marginLeft='460px'  
                 color='white'>
-                <LinkOverlay onClick={() => goToDetailPage(trips.id)}>
+                <LinkOverlay
+                 onClick={() => goToDetailPage(trips.id)}>
                   <Text>Viagem: {trips.name}</Text>
                   <Text>Planeta: {trips.planet}</Text>
                   <Text>Descrição: {trips.description}</Text>
                   <Text>Duração: {trips.durationInDays}</Text>
-                  <Text>Data: {trips.date}</Text>
+                  <Text >Data: {trips.date}</Text>
                 </LinkOverlay>
               </LinkBox>
             </Tooltip>
   })
   return (
     <Box
-    h='970px'>
-      <Center justifyContent='space-around'>
+    minH='970px'>
+      <Center justifyContent='space-around' >
         <Button
         marginTop='70px'
         variant='outline'
@@ -69,7 +70,7 @@ const ListTripsPage = () => {
         _active={{
           bg:'#009CD0'
         }} 
-        onClick={() => goToLastPage(history)}>Voltar</Button>
+        onClick={() => goToHomePage(history)}>Inicio</Button>
         <Button
         marginTop='70px'
         variant='outline'
@@ -88,7 +89,7 @@ const ListTripsPage = () => {
         }}  
         onClick={() => goToApplicationPage(history)}>Inscrever-se</Button>
       </Center>
-      <Center>
+      <Center >
         <Heading
         bgGradient={[
           "linear(to-tr, teal.300,orange.200)",

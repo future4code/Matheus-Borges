@@ -63,8 +63,8 @@ const TripDetailsPage = () => {
   })
   
   return (
-    <Box h='750px'>
-      <Box w='1300px'>
+    <Box minH='625px'>
+      <Box>
         <Heading
           bgGradient={[
             "linear(to-tr, teal.300,orange.200)",
