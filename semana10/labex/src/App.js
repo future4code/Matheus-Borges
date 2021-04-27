@@ -34,7 +34,7 @@ const App = () => {
 
         <LinkBox>
           <LinkOverlay href='https://twitter.com/TheusH7X5'>
-            <IconButton margin='10px' icon={<FaTwitter />} colorScheme='telegram'></IconButton>
+            <IconButton margin='10px' icon={<FaTwitter />} colorScheme='twitter'></IconButton>
           </LinkOverlay>
         </LinkBox>
 
@@ -42,7 +42,8 @@ const App = () => {
           <LinkOverlay href='https://www.instagram.com/theush7x5/'>
             <IconButton margin='10px' icon={<FaInstagram />} colorScheme="white"
               bg='radial-gradient(circle at 33% 100%, #fed373 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #515ecf)' 
-              _hover={'none'}>
+              _hover={'none'}
+              >
             </IconButton>          
           </LinkOverlay>
         </LinkBox>
