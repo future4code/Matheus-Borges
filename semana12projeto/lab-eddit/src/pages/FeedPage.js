@@ -1,13 +1,15 @@
 import React from 'react'
 import { Box, Text } from '@chakra-ui/layout'
 import MenuIten from '../components/MenuIten'
+import useProtectedPage from '../hooks/useProtectedPage'
 
 const FeedPage = () => {
+  useProtectedPage()
 
     return (
-      <Box minH='563px' bg='brand.600'>
+      <Box color='white' minH='563px' bg='brand.600'>
         <MenuIten/>
-        <Text color='white'>FeedPage</Text>
+        <Text >FeedPage</Text>
       </Box>
     )
   }

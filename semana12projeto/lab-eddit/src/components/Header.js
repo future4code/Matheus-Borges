@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Center, Flex, Heading, Spacer } from '@chakra-ui/layout'
 import { Button } from '@chakra-ui/button'
 import { Image } from '@chakra-ui/image'
@@ -7,9 +7,24 @@ import { useHistory } from "react-router-dom"
 import { goToLogin, goToFeed } from "../routes/coordinator"
 
 
-const Header = () => {
-
+const Header = ({buttonLog, setButtonLog}) => {
     const history = useHistory()
+    const token = localStorage.getItem('token')
+
+
+    const logout = () => {
+        localStorage.removeItem('token')
+    }
+
+    const buttonLogAction = () => {
+        if(token){
+            logout()
+            setButtonLog('Log in')
+            goToLogin(history)
+        } else {
+            goToLogin(history)
+        }
+    }
 
 
     return (
@@ -34,7 +49,7 @@ const Header = () => {
                 <Button
                 cursor='pointer'
                 as="em" 
-                onClick={() => goToLogin(history)}
+                onClick={buttonLogAction}
                 mt='0.5' 
                 mr='2' 
                 color='brand.100'
@@ -50,7 +65,7 @@ const Header = () => {
                     "0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15)",
                 }}
                 variant='ghost'>
-                    Log in
+                    {buttonLog}
                 </Button>
             </Box>
         </Flex>
