@@ -34,6 +34,7 @@ const LoginForm = ({setButtonLog}) => {
                 <Text mt='5' color='red'>*</Text>
               </Flex>
               <Input
+              autoFocus
               isRequired
               mt='3' p='2' 
               color='white'

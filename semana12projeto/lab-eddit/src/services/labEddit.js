@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Url_Base } from '../constants/Urls'
 import { goToFeed } from "../routes/coordinator"
-import { CgLogOut } from 'react-icons/cg';
+import { CgLogOut } from 'react-icons/cg'
 
 
 export const login = (body, clear, toast, history, setButtonLog) => {
@@ -39,7 +39,6 @@ export const signUp = (body, clear, toast, history, setButtonLog) => {
 
     axios.post(`${Url_Base}/signup`, body)
     .then((res) => {
-        console.log(res.data)
         localStorage.setItem('token', res.data.token)
         toast({
             title: `Cadastro feito com sucesso!`,
@@ -66,3 +65,4 @@ export const signUp = (body, clear, toast, history, setButtonLog) => {
         })
     })
 }
+

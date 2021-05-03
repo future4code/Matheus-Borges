@@ -21,7 +21,7 @@ const Router = ({setButtonLog}) => {
                     <FeedPage/>
                 </Route>
 
-                <Route exact path='/posts'>
+                <Route exact path='/posts/:postId'>
                     <PostPage/>
                 </Route>
 

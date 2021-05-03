@@ -32,6 +32,7 @@ const SignUpForm = ({setButtonLog}) => {
                 <Text mt='5' color='red'>*</Text>
               </Flex>
             <Input
+            autoFocus
             isRequired
             name={'username'}
             value={form.username}
