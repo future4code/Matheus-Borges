@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Box, Center, Text } from '@chakra-ui/layout'
 import { Input } from '@chakra-ui/input'
 import { Button } from '@chakra-ui/button'
@@ -33,8 +33,8 @@ const CommentsForme = ({postComments}) => {
                 isRequired
                 mt='3' p='2' 
                 color='white'
-                name={'email'}
-                value={form.email}
+                name={'text'}
+                value={form.text}
                 onChange={onChange} 
                 focusBorderColor="brand.100" 
                 color='white'

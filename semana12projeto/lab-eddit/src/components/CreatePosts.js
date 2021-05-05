@@ -34,8 +34,8 @@ const CreatePosts = () => {
                 borderColor='brand.300' 
                 color='white' 
                 bg='#121212' 
-                name={'text'}
-                value={form.text}
+                name={'title'}
+                value={form.title}
                 onChange={onChange}
                 />
 
@@ -47,8 +47,8 @@ const CreatePosts = () => {
                 color='white'
                 bg='#121212'
                 h='20'
-                name={'title'}
-                value={form.title}
+                name={'text'}
+                value={form.text}
                 onChange={onChange}
                 />
                 <ButtonGroup 

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import React from 'react'
 import { useParams } from 'react-router'
 import { Url_Base } from '../constants/Urls'
 
@@ -36,9 +37,9 @@ export const posts = (body, clear, toast) => {
 
 
 export const Comments = (body, clear, toast, postComments) => {
-    console.log(postComments)
 
-    axios.post(`${Url_Base}/posts/${postComments}/comments`, body, {
+    console.log(postComments.post.id)
+    axios.post(`${Url_Base}/posts/${postComments.post.id}/comment`, body, {
         headers: {
             Authorization: localStorage.getItem('token')
         }
@@ -52,8 +53,8 @@ export const Comments = (body, clear, toast, postComments) => {
             duration: 5000,
             position:"bottom-right",
             isClosable: true,
-          })
-          clear()
+        })
+        clear()
     })
     .catch((err) => {
         toast({
