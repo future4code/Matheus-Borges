@@ -1,0 +1,20 @@
+{
+  "name": "nome",
+  "version": "1.0.0",
+  "description": "nome e idade",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ola": "clear && node ola.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/future4code/Matheus-Borges.git"
+  },
+  "author": "matheus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/future4code/Matheus-Borges/issues"
+  },
+  "homepage": "https://github.com/future4code/Matheus-Borges#readme"
+}
