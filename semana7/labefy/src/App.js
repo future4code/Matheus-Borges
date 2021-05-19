@@ -136,7 +136,7 @@ export default class App extends React.Component {
       case "adicionarMusica":
         return <BotaoVerPlaylist onClick={this.mudarPagina}> Criar Playlists </BotaoVerPlaylist>
     }
-  }
+  };
 
   render() {
     return (
