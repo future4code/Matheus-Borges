@@ -1,0 +1,20 @@
+{
+  "name": "tarefas",
+  "version": "1.0.0",
+  "description": "lista de tarefas",
+  "main": "tarefas.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tarefas": "clear && node tarefas.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/future4code/Matheus-Borges.git"
+  },
+  "author": "matheus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/future4code/Matheus-Borges/issues"
+  },
+  "homepage": "https://github.com/future4code/Matheus-Borges#readme"
+}
